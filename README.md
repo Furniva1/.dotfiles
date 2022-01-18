@@ -1,25 +1,24 @@
-# .dotfiles
-Storage for Linux .dotfiles
+# Storage for Linux   .dotfiles
  
- # Work with the repository
- # from the git_workspace
- git status
- git add <filenames>
- git commit -m "first upload" <filenames>
- git push origin main   # main or master check branch
- git branch
+ ### Work with the repository
+ ### - from the ~/git_directory
+ ###### git status
+ ###### git add filenames
+ ###### git commit -m "first upload" filenames
+ ###### git push origin main
+ ###### git branch
 
-# Create a .dotfiles directory in your home directory
+### Create a .dotfiles directory in your home directory
 
-# Move your .dotfiles ex: mv .bashrc ~/.dotfiles 
+### Move your .dotfiles ex: mv .bashrc ~/.dotfiles 
 
-# Create symbolic links to old location of .bashrc
-# ln -sf ~/.dotfiles/.bashrc .bashrc
-# ln -sf ~/.dotfiles/.nanorc .nanorc
-# ln -sf ~/.dotfiles/.bash_functions .bash_functions
+### Create symbolic links to old location of .bashrc
+###### ln -sf ~/.dotfiles/.bashrc .bashrc
+###### ln -sf ~/.dotfiles/.nanorc .nanorc
+###### ln -sf ~/.dotfiles/.bash_functions .bash_functions
 
 
-# Tested on 
+### Tested on 
 NAME="Ubuntu"
 VERSION="20.04.1 LTS (Focal Fossa)"
 ID=ubuntu
