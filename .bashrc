@@ -20,6 +20,15 @@ case $- in
       *) return;;
 esac
 
+# -------------------------------------------------
+# To make .bashrc commands global for all users
+# goto /etc/skel/ as root
+# .dotfiles modified here are common to all users
+# Also any common folders/files ie: welcome.txt
+# can be placed in the /etc/skel/ location as root
+# useradd johndoe and passwd johndoe will inherit the 
+# above settings from /etc/skel/
+# -------------------------------------------------
 
 # Minor errors in path spelling are corrected automatically
 # i.e. 'cd ~/Desltop' will bring us to ~/Desktop
@@ -130,58 +139,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias lla='/bin/ls -alv --color=auto'
     alias ltr='/bin/ls -ltr --color=auto'
     alias ltra='/bin/ls -ltra --color=auto'
-    # Stop using rm command
-    alias del='gio trash --color=auto'
-    alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
-    # Fast upward navigation
-    alias ..='cd .. --color=auto'
-    alias ...='cd ../../../ --color=auto'
-    alias ....='cd ../../../../ --color=auto'
-    alias .....='cd ../../../../ --color=auto'
-    alias cdh='cd ~ --color=auto'
-    alias cd..='cd .. --color=auto'
-    # Alias Ping
-    alias ping='ping -c 5 --color=auto'
-    alias fastping='ping -c 100 -s.2 --color=auto'
-    # List TCP port that are listening
-    alias openports='sudo lsof -iTCP -sTCP:LISTEN -P --color=auto'
-    # Internet Speedtest
-    alias ethspeed='speedometer -r eno1 --color=auto'  # adapter name ip a
-    # Wifi Speedtest
-    alias wifispeed='speedometer -r --color=auto' # add adapter name ? (env variable)
-    # System Commands
-    alias reboot='sudo /sbin/reboot --color=auto'
-    alias poweroff='sudo /sbin/poweroff --color=auto'
-    alias halt='sudo /sbin/halt --color=auto'
-    alias shutdown='sudo /sbin/shutdown --color=auto'
-    # Show open ports
-    alias ports='sudo netstat -tulanp --color=auto'
-    # Free and Used
-    alias meminfo='free -m -l -t --color=auto'
-    # Get top process eating memory
-    alias psmem="ps auxf | sort -nr -k 4"
-    alias psmem10='ps auxf | sort -nr -k 4 | head -10 --color=auto'
-    # Get top process eating cpu
-    alias pscpu='ps auxf | sort -nr -k 3 --color=auto'
-    alias pscpu10='ps auxf | sort -nr -k 3 | head -10 --color=auto'
-    # Get details of a process
-    alias paux='ps aux | grep --color=auto'
-    # Get server cpu info
-    alias cpuinfo='lscpu --color=auto'
-    # Older system use /proc/cpuinfo
-    alias cpuinfo='less /proc/cpuinfo --color=auto'
-    # Get GPU ram on desktop / laptop
-    alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log --color=auto'
-    # Resume wget by default
-    alias wget='wget -c --color=auto'
-    # Grabs the disk usage in the current directory
-    alias usage='du -ch | grep total --color=auto'
-    # Gets the total disk usage on your machine
-    alias totalusage='df -hl --total | grep total --color=auto'
-    # Shows the individual partition usages without the temporary memory values
-    alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs --color=auto'
-    # Gives you what is using the most space. Both directories and files.
-    alias most='du -hsx * | sort -rh | head -10 --color=auto'
+   
 fi
 
 # colored GCC warnings and errors
@@ -216,6 +174,11 @@ fi
 
 # Redirect to .bash_aliases
 
+
+if [ -f $HOME/.bash_aliases ]; then
+    source $HOME/.bash_aliases
+fi
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 #alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/#[;&|]\s*alert$//'\'')"'
@@ -235,5 +198,6 @@ function color_my_prompt {
     export PS1="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
 }
 color_my_prompt
+neofetch
 
 

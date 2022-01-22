@@ -1,4 +1,5 @@
 # Non-default settings
+set mouse
 set atblanks        # wrap line at blanks.
 set cutfromcursor   # CTRL+K cuts from cursor position to end of line.
 set nohelp          # Disable the help information (CTRL+G to view the help screen).
